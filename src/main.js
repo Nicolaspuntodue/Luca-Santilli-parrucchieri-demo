@@ -43,7 +43,7 @@ function applyHair() {
   hs.gloss = lerp(gloss, 0.4, prog.end);
   hs.camZ = prog.hero * 2.5 * (1 - comb) - gloss * 1.2;
   hs.rotY = Math.sin(s * Math.PI * 0.75) * 0.1 * (1 - gloss);
-  const ambient = lerp(1, 0.28, prog.dim);
+  const ambient = lerp(1, 0.14, prog.dim);
   hs.fade = prog.intro * lerp(ambient, 0.4, prog.end);
 }
 
@@ -55,22 +55,42 @@ if (reduce) {
   gsap.to(prog, { intro: 1, duration: 2.2, ease: 'power2.out', onUpdate: applyHair });
 }
 
+/* ---------- Mobile menu ---------- */
+const toggle = document.querySelector('[data-menu-toggle]');
+const setMenu = (open) => {
+  document.body.classList.toggle('menu-open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.querySelector('.sr-only').textContent = open ? 'Chiudi il menu' : 'Apri il menu';
+  if (lenis) open ? lenis.stop() : lenis.start();
+};
+toggle.addEventListener('click', () => setMenu(!document.body.classList.contains('menu-open')));
+document.addEventListener('keydown', (e) => e.key === 'Escape' && setMenu(false));
+
 /* ---------- Smooth scroll (Lenis drives ScrollTrigger, no scroll listeners) ---------- */
+let lenis = null;
 if (!reduce) {
-  const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
-  document.querySelectorAll('a[href^="#"]').forEach((a) =>
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href');
-      const el = id.length > 1 && document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      lenis.scrollTo(el, { duration: 1.4 });
-    }),
-  );
 }
+document.querySelectorAll('a[href^="#"]').forEach((a) =>
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    const el = id.length > 1 && document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    setMenu(false);
+    if (lenis) lenis.scrollTo(el, { duration: 1.4 });
+    else el.scrollIntoView();
+  }),
+);
+
+/* ---------- Mobile action bar: appears once the hero buttons scroll away ---------- */
+const bar = document.querySelector('[data-actionbar]');
+new IntersectionObserver(([e]) => bar.classList.toggle('is-on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(
+  document.querySelector('.hero__ctas'),
+);
 
 /* ---------- Nav turns solid once the page leaves the very top ---------- */
 const nav = document.querySelector('[data-nav]');
@@ -205,7 +225,7 @@ mm.add(
           invalidateOnRefresh: true,
         },
       });
-      gsap.utils.toArray('.card img').forEach((img) => {
+      gsap.utils.toArray('.card__media img').forEach((img) => {
         gsap.fromTo(
           img,
           { xPercent: -7, scale: 1.18 },

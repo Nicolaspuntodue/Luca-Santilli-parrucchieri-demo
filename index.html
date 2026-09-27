@@ -2,21 +2,22 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b0c0e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a0a" />
     <title>Luca Santilli Parrucchieri | Pescara</title>
     <meta
       name="description"
-      content="Luca Santilli Parrucchieri, via Firenze 52 a Pescara. Consulenti d'immagine: check-up gratuito di cute e capelli, taglio, colore L'Oréal Professionnel, French Balayage e Glass Hair."
+      content="Luca Santilli Parrucchieri, via Firenze 52 a Pescara. Consulenti d'immagine: check-up gratuito di cute e capelli con K-Scan, taglio, colore, French Balayage e Glass Hair."
     />
     <meta property="og:title" content="Luca Santilli Parrucchieri | Pescara" />
     <meta
       property="og:description"
       content="Consulenti d'immagine a Pescara. Taglio, colore e cura su misura, a partire da un check-up gratuito."
     />
-    <meta property="og:image" content="/img/portrait.webp" />
+    <meta property="og:image" content="/img/vetrina.webp" />
     <meta property="og:type" content="website" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" as="image" href="/brand/wordmark-white.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -33,7 +34,7 @@
           "addressRegion": "PE",
           "addressCountry": "IT"
         },
-        "openingHours": ["Mo,Tu 09:00-13:00", "Mo,Tu 15:30-19:30", "We,Th,Fr,Sa 09:00-19:00"],
+        "openingHours": ["Tu,We 09:00-13:00", "Tu,We 15:30-19:30", "Th,Fr,Sa 09:00-19:00"],
         "sameAs": [
           "https://www.instagram.com/lucasantilliparrucchieri/",
           "https://www.facebook.com/santilliparrucchieri/"
@@ -48,29 +49,32 @@
     <div class="grain" aria-hidden="true"></div>
 
     <header class="nav" data-nav>
-      <a class="nav__brand" href="#top" aria-label="Luca Santilli Parrucchieri, torna all'inizio">
-        Luca Santilli<span>Parrucchieri</span>
+      <a class="nav__brand" href="#top">
+        <img src="/brand/wordmark-white.png" width="720" height="150" alt="Luca Santilli Parrucchieri" />
       </a>
-      <nav aria-label="Principale">
+      <nav class="nav__menu" id="menu" aria-label="Principale">
         <ul class="nav__links">
           <li><a href="#metodo">Metodo</a></li>
+          <li><a href="#checkup">Check-up</a></li>
           <li><a href="#servizi">Servizi</a></li>
           <li><a href="#salone">Salone</a></li>
           <li><a href="#contatti">Contatti</a></li>
         </ul>
       </nav>
-      <a class="btn btn--accent btn--sm" href="tel:+390854221321">
+      <a class="btn btn--accent btn--sm nav__cta" href="tel:+390854221321">
         <i class="ph-light ph-phone" aria-hidden="true"></i>Prenota
       </a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+        <span class="sr-only">Apri il menu</span>
+        <span class="nav__bars" aria-hidden="true"></span>
+      </button>
     </header>
 
     <main id="main">
-      <!-- HERO: the WebGL strands are the visual -->
+      <!-- HERO: the WebGL hair is the visual -->
       <section class="hero" id="top">
         <div class="hero__inner">
-          <h1 class="hero__title" data-split>
-            Capelli che raccontano chi <em>sei</em>.
-          </h1>
+          <h1 class="hero__title" data-split>Capelli che raccontano chi <em>sei</em>.</h1>
           <p class="hero__sub" data-fade>
             Consulenti d'immagine in via Firenze, a Pescara. Taglio, colore e cura su misura, a partire
             da un check-up gratuito.
@@ -129,7 +133,7 @@
         </div>
       </section>
 
-      <!-- CHECK-UP: split image + text -->
+      <!-- CHECK-UP: image, then copy (side by side on desktop) -->
       <section class="checkup" id="checkup">
         <figure class="checkup__media" data-reveal-img>
           <img
@@ -137,21 +141,22 @@
             width="896"
             height="1120"
             loading="lazy"
-            alt="Una stylist analizza la cute di una cliente con una microcamera tricologica"
+            alt="Una stylist analizza la cute di una cliente con una microcamera, l'immagine ingrandita appare su un tablet"
           />
         </figure>
         <div class="checkup__copy">
           <h2 class="h2" data-split>Il check-up è <em>gratuito</em>.</h2>
           <p data-fade>
-            Siamo consulenti d'immagine prima ancora che parrucchieri. Analizziamo cute e capelli, ti
-            spieghiamo cosa vediamo e ti proponiamo un percorso personalizzato, senza impegno.
+            Siamo consulenti d'immagine prima ancora che parrucchieri. Con la diagnosi K-Scan di
+            Kérastase osserviamo cute e capelli ingranditi, ti spieghiamo cosa vediamo e ti proponiamo un
+            percorso su misura, senza impegno.
           </p>
           <ul class="chips" data-fade aria-label="Trattamenti che utilizziamo">
+            <li>K-Scan Kérastase</li>
             <li>Metal Detox</li>
             <li>Absolut Repair Molecular</li>
             <li>Scalp Advanced</li>
             <li>Vitamino Color</li>
-            <li>Pro Longer</li>
           </ul>
           <a class="btn btn--accent" href="tel:+390854221321" data-fade>
             <i class="ph-light ph-phone" aria-hidden="true"></i>Prenota
@@ -159,47 +164,55 @@
         </div>
       </section>
 
-      <!-- SERVIZI: horizontal pan on desktop, swipe on mobile -->
+      <!-- SERVIZI: horizontal pan on desktop, swipe on mobile. Text always sits under the image. -->
       <section class="servizi" id="servizi">
         <div class="servizi__track" data-track>
           <header class="servizi__intro">
             <p class="eyebrow">Servizi</p>
             <h2 class="h2">Quello che facciamo in <em>salone</em>.</h2>
+            <p class="servizi__hint" aria-hidden="true">
+              <i class="ph-light ph-hand-swipe-left"></i>Scorri
+            </p>
           </header>
 
           <article class="card">
-            <img src="/img/taglio.webp" width="896" height="1120" loading="lazy" alt="Mani di un parrucchiere che tagliano capelli lunghi scuri con forbici e pettine" />
+            <div class="card__media"><img src="/img/taglio.webp" width="896" height="1120" loading="lazy" alt="Mani di un parrucchiere che tagliano capelli lunghi scuri con forbici e pettine" /></div>
             <h3>Taglio donna</h3>
             <p>Linee pulite o scalature morbide, disegnate su viso e texture.</p>
           </article>
           <article class="card">
-            <img src="/img/uomo.webp" width="1200" height="1524" loading="lazy" alt="Ritratto di profilo di un uomo con taglio corto sfumato" />
+            <div class="card__media"><img src="/img/uomo.webp" width="1200" height="1524" loading="lazy" alt="Ritratto di profilo di un uomo con taglio corto sfumato" /></div>
             <h3>Taglio uomo</h3>
             <p>Tagli contemporanei e sfumature precise, con consigli per lo styling di ogni giorno.</p>
           </article>
           <article class="card">
-            <img src="/img/colore.webp" width="1024" height="1024" loading="lazy" alt="Ciotola con colore ramato, pennello e ciocche di prova" />
+            <div class="card__media"><img src="/img/piega.webp" width="896" height="1120" loading="lazy" alt="Un parrucchiere in maglietta nera asciuga con la spazzola i capelli lunghi di una cliente sorridente" /></div>
+            <h3>Piega e styling</h3>
+            <p>Piega, onde e wet style, con strumenti ghd per un risultato che dura.</p>
+          </article>
+          <article class="card">
+            <div class="card__media"><img src="/img/colore.webp" width="1024" height="1024" loading="lazy" alt="Ciotola con colore ramato, pennello e ciocche di prova" /></div>
             <h3>Colore</h3>
             <p>INOA senza ammoniaca, Majirel e DIA Light per copertura, riflessi e tonalizzazioni.</p>
           </article>
           <article class="card">
-            <img src="/img/balayage.webp" width="1200" height="1600" loading="lazy" alt="Capelli lunghi in movimento con balayage ramato e miele" />
+            <div class="card__media"><img src="/img/balayage.webp" width="1200" height="1600" loading="lazy" alt="Capelli lunghi in movimento con balayage ramato e miele" /></div>
             <h3>French Balayage</h3>
             <p>Schiariture dipinte a mano che crescono con naturalezza.</p>
           </article>
           <article class="card">
-            <img src="/img/portrait.webp" width="1200" height="1344" loading="lazy" alt="Donna di profilo con capelli lunghi ramati, lucidi e ondulati" />
+            <div class="card__media"><img src="/img/portrait.webp" width="1200" height="1344" loading="lazy" alt="Donna di profilo con capelli lunghi ramati, lucidi e ondulati" /></div>
             <h3>Glass Hair</h3>
             <p>Glossing all'acido ialuronico per una brillantezza effetto vetro.</p>
           </article>
           <article class="card">
-            <img src="/img/curls.webp" width="1200" height="1088" loading="lazy" alt="Ritratto di una donna con ricci voluminosi castano ramato" />
+            <div class="card__media"><img src="/img/curls.webp" width="1200" height="1088" loading="lazy" alt="Ritratto di una donna con ricci voluminosi castano ramato" /></div>
             <h3>Ricci</h3>
             <p>Taglio e cura dedicati ai capelli ricci, con la linea Curl Expression.</p>
           </article>
           <article class="card card--text">
             <h3>E ancora</h3>
-            <p>Piega, wet style ed extension. Raccontaci cosa desideri, troviamo insieme la soluzione.</p>
+            <p>Extension e trattamenti per cute e lunghezze. Raccontaci cosa desideri, troviamo insieme la soluzione.</p>
             <a class="btn btn--dark" href="tel:+390854221321">
               <i class="ph-light ph-phone" aria-hidden="true"></i>Prenota
             </a>
@@ -207,7 +220,7 @@
         </div>
       </section>
 
-      <!-- SALONE: full-bleed zoom image -->
+      <!-- SALONE: the one deliberate colour block, white like the real salon -->
       <section class="salone" id="salone">
         <div class="salone__frame" data-zoom>
           <img
@@ -215,79 +228,102 @@
             width="1344"
             height="752"
             loading="lazy"
-            alt="Interno di un salone moderno con specchi tondi illuminati e poltrone nere"
+            alt="Interno luminoso di un salone con pareti bianche, scaffali di prodotti e poltrone nere"
           />
         </div>
         <div class="salone__copy">
-          <h2 class="h2" data-split>Nel centro di <em>Pescara</em>.</h2>
+          <h2 class="h2" data-split>Luminoso, come dovrebbe essere un <em>salone</em>.</h2>
           <p data-fade>
-            Un salone raccolto in via Firenze, dove ogni appuntamento ha il suo tempo. Lavoriamo come
-            salone L'Oréal Professionnel, con prodotti e tecniche aggiornati di stagione in stagione.
+            Pareti bianche, luce naturale e i prodotti professionali sempre a vista. Lavoriamo con
+            L'Oréal Professionnel, Kérastase e ghd, con tecniche aggiornate di stagione in stagione.
           </p>
         </div>
       </section>
 
-      <!-- CONTATTI -->
+      <!-- CONTATTI: shop front + practical info -->
       <section class="contatti" id="contatti">
-        <div class="contatti__head">
+        <figure class="contatti__media" data-fade>
+          <img
+            src="/img/vetrina.webp"
+            width="792"
+            height="1168"
+            loading="lazy"
+            alt="La vetrina del salone con insegna nera Luca Santilli parrucchieri"
+          />
+        </figure>
+
+        <div class="contatti__body">
           <p class="eyebrow">Contatti</p>
-          <h2 class="h2" data-split>Ti aspettiamo in <em>salone</em>.</h2>
-        </div>
+          <h2 class="h2" data-split>Ti aspettiamo in via <em>Firenze</em>.</h2>
 
-        <div class="contatti__grid">
-          <div class="info" data-fade>
-            <h3><i class="ph-light ph-map-pin" aria-hidden="true"></i>Indirizzo</h3>
-            <p>Via Firenze 52<br />65122 Pescara (PE)</p>
-            <a
-              class="link"
-              href="https://www.google.com/maps/search/?api=1&query=Luca+Santilli+Parrucchieri+Via+Firenze+52+Pescara"
-              target="_blank"
-              rel="noopener"
-              >Come arrivare <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i
-            ></a>
+          <div class="contatti__grid">
+            <div class="info" data-fade>
+              <h3><i class="ph-light ph-map-pin" aria-hidden="true"></i>Indirizzo</h3>
+              <p>Via Firenze 52<br />65122 Pescara (PE)</p>
+              <a
+                class="link"
+                href="https://www.google.com/maps/search/?api=1&query=Luca+Santilli+Parrucchieri+Via+Firenze+52+Pescara"
+                target="_blank"
+                rel="noopener"
+                >Come arrivare <i class="ph-light ph-arrow-up-right" aria-hidden="true"></i
+              ></a>
+            </div>
+
+            <div class="info" data-fade>
+              <h3><i class="ph-light ph-phone" aria-hidden="true"></i>Contatti</h3>
+              <p>
+                <a class="link" href="tel:+390854221321">085 422 1321</a><br />
+                <a class="link link--break" href="mailto:lucasantilliparrucchieri@gmail.com">lucasantilliparrucchieri@gmail.com</a>
+              </p>
+              <p class="socials">
+                <a class="link" href="https://www.instagram.com/lucasantilliparrucchieri/" target="_blank" rel="noopener"
+                  ><i class="ph-light ph-instagram-logo" aria-hidden="true"></i>Instagram</a
+                >
+                <a class="link" href="https://www.facebook.com/santilliparrucchieri/" target="_blank" rel="noopener"
+                  ><i class="ph-light ph-facebook-logo" aria-hidden="true"></i>Facebook</a
+                >
+              </p>
+            </div>
+
+            <div class="info info--hours" data-fade>
+              <h3><i class="ph-light ph-clock" aria-hidden="true"></i>Orari</h3>
+              <dl class="hours">
+                <div><dt>Lunedì</dt><dd>Chiuso</dd></div>
+                <div><dt>Martedì, mercoledì</dt><dd>9:00 - 13:00<br />15:30 - 19:30</dd></div>
+                <div><dt>Giovedì - sabato</dt><dd>9:00 - 19:00</dd></div>
+                <div><dt>Domenica</dt><dd>Chiuso</dd></div>
+              </dl>
+            </div>
           </div>
 
-          <div class="info" data-fade>
-            <h3><i class="ph-light ph-clock" aria-hidden="true"></i>Orari</h3>
-            <dl class="hours">
-              <div><dt>Lunedì, martedì</dt><dd>9:00 - 13:00<br />15:30 - 19:30</dd></div>
-              <div><dt>Mercoledì - sabato</dt><dd>9:00 - 19:00</dd></div>
-              <div><dt>Domenica</dt><dd>Chiuso</dd></div>
-            </dl>
+          <div class="contatti__cta" data-fade>
+            <a class="btn btn--accent btn--lg" href="tel:+390854221321">
+              <i class="ph-light ph-phone" aria-hidden="true"></i>Prenota
+            </a>
           </div>
-
-          <div class="info" data-fade>
-            <h3><i class="ph-light ph-phone" aria-hidden="true"></i>Contatti</h3>
-            <p>
-              <a class="link" href="tel:+390854221321">085 422 1321</a><br />
-              <a class="link" href="mailto:lucasantilliparrucchieri@gmail.com">lucasantilliparrucchieri@gmail.com</a>
-            </p>
-            <p class="socials">
-              <a class="link" href="https://www.instagram.com/lucasantilliparrucchieri/" target="_blank" rel="noopener"
-                ><i class="ph-light ph-instagram-logo" aria-hidden="true"></i>Instagram</a
-              >
-              <a class="link" href="https://www.facebook.com/santilliparrucchieri/" target="_blank" rel="noopener"
-                ><i class="ph-light ph-facebook-logo" aria-hidden="true"></i>Facebook</a
-              >
-            </p>
-          </div>
-        </div>
-
-        <div class="contatti__cta" data-fade>
-          <a class="btn btn--accent btn--lg" href="tel:+390854221321">
-            <i class="ph-light ph-phone" aria-hidden="true"></i>Prenota
-          </a>
         </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p class="footer__word" aria-hidden="true">Luca Santilli</p>
+      <img class="footer__logo" src="/brand/logo-white.png" width="720" height="390" loading="lazy" alt="Luca Santilli Parrucchieri" />
       <div class="footer__meta">
         <p>Esselle s.a.s. di Santilli Luca &amp; C. · Via Firenze 52, Pescara</p>
-        <p>Demo concept, immagini generate a scopo illustrativo.</p>
+        <p>Demo concept. Immagini generate a scopo illustrativo.</p>
       </div>
     </footer>
+
+    <!-- Mobile: the two actions a visitor needs, always under the thumb -->
+    <div class="actionbar" data-actionbar>
+      <a class="btn btn--accent" href="tel:+390854221321"><i class="ph-light ph-phone" aria-hidden="true"></i>Prenota</a>
+      <a
+        class="btn btn--ghost"
+        href="https://www.google.com/maps/search/?api=1&query=Luca+Santilli+Parrucchieri+Via+Firenze+52+Pescara"
+        target="_blank"
+        rel="noopener"
+        ><i class="ph-light ph-map-pin" aria-hidden="true"></i>Come arrivare</a
+      >
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>
